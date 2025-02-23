@@ -1,6 +1,6 @@
 package com.eclock.repository;
 
-import com.eclock.entity.RoleEntity;
+import com.eclock.model.RoleEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

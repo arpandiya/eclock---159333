@@ -1,0 +1,38 @@
+<!Doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>eClock</title>
+    <link rel="stylesheet" href="/static/css/home.css">
+    <meta http-equiv="refresh" content="5">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+</head>
+
+<body>
+<div th:insert="~{fragments/navbar :: navbar}"></div>
+    <section class="bg-gradient-to-r from-cyan-500 to-blue-500 h-screen flex items-center justify-center">
+
+
+    <div class="bg-gradient-to-r from-cyan-100 to-blue-600 w-[90vw] h-[90vw] flex-col place-items-center rounded-sm">
+        <h2 class="text-2xl font-bold text-blue-400 text-center stroke-blue-50 my-4">eClock</h2>
+        <p class="text-blue-800 text-italic text-center">A complete employee management system </p>
+
+        <button class="my-8 hover:opacity-75 hover:scale-101 text-white font-bold
+         py-2 px-4 rounded-full
+         cursor-pointer
+         h-[150px] w-[150px]
+         border-2 border-blue-200
+         focus:outline-none
+         bg-gradient-to-r from-cyan-500 to-blue-500
+         focus:shadow-outline"
+        ><a class="text-2xl" th:href="@{/login}">Login</a></button>
+
+    </div>
+    </section>
+
+
+</body>
+
+</html>

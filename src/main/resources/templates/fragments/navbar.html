@@ -1,0 +1,63 @@
+
+<!-- Navbar -->
+<div th:fragment="navbar" class="h-[10vh] bg-gradient-to-r from-cyan-500 to-blue-500 w-full">
+    <nav class="grid grid-cols-10 h-[10vh]">
+        <div class="col-span-2 flex justify-center items-center hover:scale-105">
+            <img src="/icons/hourglass-icon.png" width="40" height="40" alt="">
+            <a class="text-bolder text-4xl text-white"
+               href="/">eClock</a>
+        </div>
+        <div class="col-span-8">
+            <ul class="flex justify-around items-center h-full w-full">
+                <li class="hover:scale-104">
+                    <a class="text-bold text-white text-xl flex justify-around items-center" href="/">
+                        <img src="/icons/home-icon.png" width="30" height="30" alt="">
+                        <h3 class="text-bottom">Home</h3>
+                    </a>
+                </li>
+
+                <li class="hover:scale-104">
+                    <a class="text-bold text-white text-xl flex justify-around items-center" href="/">
+                        <img
+                                src="/icons/sheet-icon.png" width="30" height="30"  alt="">
+                        <h3 class="text-bottom">Timesheet</h3>
+                    </a>
+                </li>
+
+                <li class="hover:scale-104">
+                    <a class="text-bold text-white text-xl flex justify-around items-center" href="/">
+                        <img src="/icons/task-icon2.png" width="30" height="30" alt="">
+                        <h3 >Task</h3>
+                    </a>
+                </li>
+
+                <li class="hover:scale-104">
+                    <a class="text-bold text-white text-xl flex justify-around items-center" href="/">
+                        <img class="hover:scale-104" width="40" height="40"
+                             src="/icons/solid-avatar.png" alt="">
+                        <h3 class="">Profile</h3>
+                    </a>
+
+
+                </li>
+
+            </ul>
+        </div>
+
+        <!--        display at hover on profile-->
+        <div class="hidden bg-blue-100 w-[10vw] h-[110px] flex flex-col space-evenly absolute right-20 top-[10vh]">
+
+            <h1 class="text-bold text-xl py-2 text-center text-blue-600"
+                th:text="${user.getFullName()}">Dashboard </h1>
+            <hr/>
+            <div class="py-2 text-center bg-blue-200 mt-2">
+                <a class="bg-blue-500 rounded-sm text-white py-2 px-4" th:href="@{/logout}">Logout</a>
+            </div>
+
+
+        </div>
+    </nav>
+
+</div>
+
+

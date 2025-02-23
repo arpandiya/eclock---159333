@@ -1,0 +1,10 @@
+package com.eclock.service;
+
+import com.eclock.Dto.TimesheetDto;
+import com.eclock.model.TimesheetEntity;
+
+
+public interface ITimesheetService {
+    TimesheetEntity createTimesheet(TimesheetDto timesheetDto);
+
+}

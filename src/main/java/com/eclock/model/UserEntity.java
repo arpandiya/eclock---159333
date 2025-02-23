@@ -1,4 +1,4 @@
-package com.eclock.entity;
+package com.eclock.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -8,13 +8,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "users")
+@Table(name = "users_table")
 public class UserEntity implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,7 +35,17 @@ public class UserEntity implements UserDetails {
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<RoleEntity> roles;
+    private List<RoleEntity> roles;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name="user_task",
+        joinColumns = @JoinColumn(name="user_id"),
+            inverseJoinColumns = @JoinColumn(name="task_id"))
+    private List<TaskEntity> tasks;
+
+
+    @OneToMany(mappedBy = "users", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    private List<TimesheetEntity> timesheets;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -129,11 +138,11 @@ public class UserEntity implements UserDetails {
         this.phone = phone;
     }
 
-    public Set<RoleEntity> getRoles() {
+    public List<RoleEntity> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<RoleEntity> roles) {
+    public void setRoles(List<RoleEntity> roles) {
         this.roles = roles;
     }
 }

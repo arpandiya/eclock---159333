@@ -1,25 +1,25 @@
-package com.eclock.entity;
+package com.eclock.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import java.util.Set;
+import java.util.List;
 
 @Entity
-@Table(name = "roles")
+@Table(name = "roles_table")
 @RequiredArgsConstructor
 @AllArgsConstructor
+@Data
 public class RoleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(unique = true, nullable = false)
     private String name;
+
     @ManyToMany(mappedBy = "roles")
-    private Set<UserEntity> users;
+    private List<UserEntity> users;
 
     public Long getId() {
         return id;
@@ -37,11 +37,11 @@ public class RoleEntity {
         this.name = name;
     }
 
-    public Set<UserEntity> getUsers() {
+    public List<UserEntity> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<UserEntity> users) {
+    public void setUsers(List<UserEntity> users) {
         this.users = users;
     }
 }
